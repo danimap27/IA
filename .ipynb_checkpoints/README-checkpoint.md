@@ -6,6 +6,4 @@ TEMA 3: [Regresión Lineal](EB/Tema3.md)
 
 TEMA 4: [Regresión Logística](EB/Tema4.md)
 
-TEMA 5: [Redes Neuronales](EB/Tema5.md)
-
 
