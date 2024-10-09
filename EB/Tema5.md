@@ -24,14 +24,14 @@
 - **Neuronas Biológicas vs. Artificiales**:
   - Las neuronas biológicas son la unidad básica del cerebro, encargadas de procesar y transmitir información mediante impulsos eléctricos.
   - Las neuronas artificiales son una simplificación computacional que imita este comportamiento.
-  - Cada neurona artificial recibe **entradas** (\( x_1, x_2, ... x_n \)) que se multiplican por un conjunto de **pesos** (\( \theta_1, \theta_2, ... \theta_n \)).
+  - Cada neurona artificial recibe **entradas** ($\( x_1, x_2, ... x_n \$)) que se multiplican por un conjunto de **pesos** ($\( \theta_1, \theta_2, ... \theta_n \$)).
   - La neurona genera una salida a través de una función de activación.
 
 - **Modelo de Regresión Lineal**:
   - En su forma más básica, una neurona realiza una **regresión lineal**:
-    - \( y = \theta_0 + \theta_1 x_1 + \theta_2 x_2 + ... + \theta_n x_n \)
+    - $\( y = \theta_0 + \theta_1 x_1 + \theta_2 x_2 + ... + \theta_n x_n \$)
   - Los **pesos** determinan la importancia de cada entrada.
-  - El **sesgo (bias)**, representado como \( \theta_0 \), actúa como un término independiente que ayuda a ajustar la salida de la neurona.
+  - El **sesgo (bias)**, representado como $\( \theta_0 \$), actúa como un término independiente que ayuda a ajustar la salida de la neurona.
   
 - **Puertas Lógicas**:
   - Las neuronas artificiales pueden simular comportamientos como las puertas lógicas **AND**, **OR** y **XOR**:
@@ -63,9 +63,9 @@
   - Este proceso continúa hasta llegar a la **capa de salida**, que genera la predicción final.
   
 - **Matemáticas detrás de Forward Propagation**:
-  - Si \( a^{(l)} \) es la activación en la capa \( l \), \( \Theta^{(l)} \) son los pesos asociados a esa capa, y \( z^{(l)} \) es la combinación lineal de las entradas, entonces:
-    - \( z^{(l+1)} = \Theta^{(l)} a^{(l)} \)
-    - \( a^{(l+1)} = f(z^{(l+1)}) \), donde \( f \) es la función de activación.
+  - Si $\( a^{(l)} \$) es la activación en la capa $\( l \$), $\( \Theta^{(l)} \$) son los pesos asociados a esa capa, y $\( z^{(l)} \$) es la combinación lineal de las entradas, entonces:
+    - $\( z^{(l+1)} = \Theta^{(l)} a^{(l)} \$)
+    - $\( a^{(l+1)} = f(z^{(l+1)}) \$), donde $\( f \$) es la función de activación.
   - Este proceso se repite hasta obtener la salida.
 
 ---
@@ -83,8 +83,8 @@
 
 - **Función de Coste (Error Cuadrático Medio)**:
   - Para redes neuronales, una función común es el **error cuadrático medio**:
-    - \( J(\theta) = \frac{1}{m} \sum_{i=1}^{m} (h_\theta(x^{(i)}) - y^{(i)})^2 \)
-  - Donde \( h_\theta(x^{(i)}) \) es la predicción de la red y \( y^{(i)} \) es el valor real.
+    - $\( J(\theta) = \frac{1}{m} \sum_{i=1}^{m} (h_\theta(x^{(i)}) - y^{(i)})^2 \$)
+  - Donde $\( h_\theta(x^{(i)}) \$) es la predicción de la red y $\( y^{(i)} \$) es el valor real.
 
 ### 2. Descenso del Gradiente y Backpropagation
 
@@ -92,8 +92,8 @@
   - Algoritmo para optimizar los **pesos** de la red minimizando la función de coste.
   - En cada iteración, ajusta los pesos en la dirección opuesta al gradiente de la función de coste con respecto a esos pesos.
   - Fórmula:
-    - \( \theta := \theta - \alpha \cdot \nabla J(\theta) \)
-    - Donde \( \alpha \) es el **tamaño del paso** o tasa de aprendizaje, y \( \nabla J(\theta) \) es el gradiente de la función de coste.
+    - $\( \theta := \theta - \alpha \cdot \nabla J(\theta) \$)
+    - Donde $\( \alpha \$) es el **tamaño del paso** o tasa de aprendizaje, y $\( \nabla J(\theta) \$) es el gradiente de la función de coste.
 
 - **Backpropagation**:
   - Algoritmo utilizado para calcular el **gradiente** de la función de coste con respecto a cada peso de la red.
@@ -105,19 +105,70 @@
 
 ### 3. Implementación en Python
 
-- **Forward Propagation en Python**:
-  - Implementar la propagación hacia adelante calculando las activaciones para cada capa.
-  - Se utiliza una función de activación como `sigmoid()` para transformar las entradas.
-  
+#### 1. Unroll y roll de Parámetros
+
+En la implementación de redes neuronales, a menudo necesitamos "desenrollar" los parámetros (pesos de las conexiones entre neuronas) en un vector para luego aplicar funciones de optimización. Al final del proceso, los "enrollamos" nuevamente en matrices.
+
+- **Desenrollar Parámetros**:
+Los pesos de cada capa se almacenan inicialmente en matrices $\( \Theta_1, \Theta_2, \dots, \Theta_L \$). Para aplicar algoritmos de optimización, desenrollamos estas matrices en un único vector. Esto es útil en la optimización avanzada, ya que los algoritmos esperan los parámetros en esta forma de vector.
+
+- **Enrollar Parámetros**:
+Después de aplicar un algoritmo de optimización, el vector resultante debe "enrollarse" de nuevo en las matrices correspondientes a cada capa para ser utilizado en las predicciones. De esta manera, cada subconjunto de parámetros se transforma nuevamente en su forma matricial, lo que permite realizar cálculos en la red neuronal.
+
+---
+
+#### 2. Función de Coste y Gradiente
+
+La función de coste se utiliza para medir el error de la red y ajustar los parámetros de la red para minimizar ese error. La función de coste se compone del error entre las predicciones y las etiquetas verdaderas. Para mejorar la capacidad de generalización de la red, se utiliza un término de **regularización** para penalizar los pesos elevados.
+
+- **Función de Coste**:
+El objetivo de la función de coste es minimizar la diferencia entre la salida esperada y la predicción de la red. La función incluye un término de regularización que penaliza los valores grandes en los pesos para evitar el sobreajuste de los datos.
+
+- **Gradiente**:
+El cálculo del gradiente permite ajustar los pesos de la red. El algoritmo de **backpropagation** se utiliza para calcular cómo cada parámetro de la red contribuye al error total. Esto permite actualizar los pesos en dirección opuesta al gradiente para minimizar el error. El término de regularización también se incluye en el cálculo del gradiente para evitar un crecimiento excesivo de los parámetros.
+
+---
+
+#### 3. Propagación hacia Adelante (Forward Propagation)
+
+La **propagación hacia adelante** es el proceso mediante el cual las entradas de la red neuronal pasan a través de las diferentes capas, hasta llegar a la capa de salida, donde se genera la predicción. En cada capa, las entradas se combinan con los pesos y se aplican funciones de activación para producir salidas intermedias, que luego se utilizan como entradas para la siguiente capa.
+
+La salida de la red es el resultado final de este proceso de múltiples capas, y es comparada con el valor esperado durante el entrenamiento para calcular el error.
+
+---
   ```python
   def forward(Theta1, Theta2, X):
-      a1 = np.hstack((np.ones(1), X))  # Añadir bias
+      # Añadir bias + neuras de la capa 1
+      a1 = np.hstack((np.ones(1), X))
       z2 = Theta1 @ a1
       a2 = sigmoid(z2)
-      a2 = np.hstack((np.ones(1), a2))  # Añadir bias en la segunda capa
+      # Añadir bias en la segunda capa
+      a2 = np.hstack((np.ones(1), a2))
       z3 = Theta2 @ a2
       a3 = sigmoid(z3)
       return a3  # Predicción final
-    ```
+  ```
+#### 4. Comprobación Numérica del Gradiente
+
+Es crucial verificar que el gradiente calculado con **backpropagation** es correcto. Para esto, se puede realizar una **comprobación numérica del gradiente** comparando el valor del gradiente calculado mediante backpropagation con una aproximación numérica del gradiente.
+
+La **fórmula de diferencia central** se utiliza para aproximar el gradiente. Esta comprobación asegura que los gradientes calculados no contienen errores, lo cual es crucial para la correcta actualización de los pesos.
+
+---
+
+#### 5. Inicialización de Parámetros
+
+Es importante inicializar los pesos de la red neuronal con valores **aleatorios pequeños** para evitar problemas de simetría. Si todos los pesos se inician con ceros o valores iguales, las neuronas aprenderán características idénticas y el entrenamiento no será efectivo.
+
+La inicialización aleatoria rompe la simetría y asegura que las neuronas puedan aprender diferentes características de los datos.
+
+```python
+def initializeWeights(L_in, L_out):
+    epsilon = 0.12
+    return np.random.rand(L_out, 1 + L_in) * 2 * epsilon - epsilon
+```
+
+---
+  
 
 [Volver al índice](../README.md)
