@@ -19,7 +19,7 @@ def gradientDescentMulti(X, y, theta, alpha, iterations):
     #       of the cost function (computeCostMulti) and gradient here.
     for iter in range(iterations):
         h = np.dot(X, theta)
-        theta = theta - alpha * (1 / m)*(np.dot(X.T, (h-y)))
+        theta = theta - alpha * (1/m)*(np.dot(X.T, (h-y)))
         current_iter.append(iter)
         current_cost.append(computeCostMulti(X, y, theta))
 
