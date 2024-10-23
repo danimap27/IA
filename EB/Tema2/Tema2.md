@@ -126,4 +126,4 @@ Para cada iteración, se usa una única instancia como conjunto de prueba y el r
 
 [Volver al índice](../README.md)
 
-[Ir al siguiente tema: Tema 3: Regresión Lineal](Tema3/Tema3.md)
+[Ir al siguiente tema: Tema 3: Regresión Lineal](../Tema3/Tema3.md)
