@@ -8,4 +8,6 @@ TEMA 4: [Regresión Logística](EB/Tema4/Tema4.md)
 
 TEMA 5: [Redes Neuronales](EB/Tema5/Tema5.md)
 
+TEMA 5: [Clustering](EB/Tema6/Tema6.md)
+
 
