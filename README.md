@@ -10,4 +10,6 @@ TEMA 5: [Redes Neuronales](EB/Tema5/Tema5.md)
 
 TEMA 6: [Clustering](EB/Tema6/Tema6.md)
 
+TEMA 7: [Sistemas de recomendación](EB/Tema7/Tema7.md)
+
 
