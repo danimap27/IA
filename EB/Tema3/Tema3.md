@@ -45,6 +45,6 @@ $\[
 
 ---
 
-[Volver al índice](../README.md)
+[Volver al índice](../../README.md)
 
 [Ir al siguiente tema: Tema 4: Regresión Logística](../Tema4/Tema4.md)

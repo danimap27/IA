@@ -49,6 +49,6 @@ No hay una regla fija para elegir $K$.
 - Manualmente: Se puede elegir un valor de $K$ que tenga sentido en el contexto del problema.
 - Método del codo (Elbow Method): Se ejecuta K-Means con diferentes valores de $K$ y se representa el coste en función de $K$. Se elige el valor de $K$ en el punto donde la curva empieza a aplanarse.
 
-[Volver al índice](../README.md)
+[Volver al índice](../../README.md)
 
 [Ir al siguiente tema: Tema 7: Sistemas de recomendación](../Tema7/Tema7.md)

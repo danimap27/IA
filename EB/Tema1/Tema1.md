@@ -41,6 +41,6 @@ El desarrollo de la IA se apoya en campos como:
 
 ---
 
-[Volver al índice](../README.md)
+[Volver al índice](../../README.md)
 
 [Ir al siguiente tema: Tema 2: Introducción al Machine Learning](../Tema2/Tema2.md)

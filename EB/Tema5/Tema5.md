@@ -171,5 +171,5 @@ def initializeWeights(L_in, L_out):
 ---
   
 
-[Volver al índice](../README.md)
+[Volver al índice](../../README.md)
 [Ir al siguiente tema: Tema 6: Clustering](../Tema6/Tema6.md)

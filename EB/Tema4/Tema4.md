@@ -108,6 +108,6 @@ def gradientFunction(theta, X, y):
 
 ---
 
-[Volver al índice](../README.md)
+[Volver al índice](../../README.md)
 
 [Ir al siguiente tema: Tema 5: Redes Neuronales](../Tema5/Tema5.md)
