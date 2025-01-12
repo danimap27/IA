@@ -104,4 +104,4 @@
 
 [Volver al índice](../../README.md)
 
-[Ir al siguiente tema: Tema 8.1: Búsqueda no Informada](../Tema8/Tema8.md)
+[Ir al siguiente tema: Tema 8.1: Búsqueda no Informada](../Tema8/Tema8_1.md)
