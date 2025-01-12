@@ -12,4 +12,7 @@ TEMA 6: [Clustering](EB/Tema6/Tema6.md)
 
 TEMA 7: [Sistemas de recomendación](EB/Tema7/Tema7.md)
 
+TEMA 8.1: [Búsquedas no Informadas](EB/Tema8/Tema8_1.md)
+
+TEMA 8.2: [Búsquedas Informadas](EB/Tema8/Tema8_2.md)
 
